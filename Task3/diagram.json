@@ -3,26 +3,26 @@
   "author": "Stenli Sobolev (BLOOTBER)",
   "editor": "wokwi",
   "parts": [
-    { "type": "wokwi-arduino-uno", "id": "uno", "top": 0, "left": 0, "attrs": {} },
+    { "type": "wokwi-arduino-uno", "id": "uno", "top": 0.6, "left": -0.6, "attrs": {} },
     {
       "type": "wokwi-pushbutton",
       "id": "btn1",
-      "top": 227,
-      "left": 278.4,
+      "top": 323,
+      "left": 249.6,
       "attrs": { "color": "red" }
     },
     {
       "type": "wokwi-pushbutton",
       "id": "btn2",
-      "top": 275,
-      "left": 278.4,
+      "top": 371,
+      "left": 249.6,
       "attrs": { "color": "yellow" }
     },
     {
       "type": "wokwi-pushbutton",
       "id": "btn3",
-      "top": 323,
-      "left": 278.4,
+      "top": 419,
+      "left": 249.6,
       "attrs": { "color": "yellow" }
     },
     {
@@ -37,14 +37,35 @@
       "id": "dht1",
       "top": 77.1,
       "left": -63,
-      "attrs": { "temperature": "59.1", "humidity": "92" }
+      "attrs": { "temperature": "61.6", "humidity": "77.5" }
     },
     {
       "type": "wokwi-rgb-led",
       "id": "rgb1",
-      "top": 128.8,
-      "left": 289.1,
+      "top": 157.6,
+      "left": 490.7,
       "attrs": { "common": "cathode" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 234.35,
+      "left": 422.4,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": 253.55,
+      "left": 422.4,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r3",
+      "top": 272.75,
+      "left": 422.4,
+      "attrs": { "value": "220" }
     }
   ],
   "connections": [
@@ -69,10 +90,13 @@
     [ "dht1:VCC", "uno:3.3V", "red", [ "v67.2", "h192" ] ],
     [ "dht1:SDA", "uno:A3", "white", [ "v86.4", "h192.1" ] ],
     [ "dht1:GND", "uno:GND.2", "black", [ "v28.8", "h192" ] ],
-    [ "rgb1:R", "uno:A4", "orange", [ "v38.4", "h-76.8" ] ],
-    [ "rgb1:G", "uno:A5", "orange", [ "v48", "h-85.1" ] ],
-    [ "rgb1:B", "uno:1", "orange", [ "v0", "h1.6", "v-38.4", "h-86.4", "v-134.4", "h-19.2" ] ],
-    [ "rgb1:COM", "uno:GND.2", "black", [ "v47.6", "h-124.7" ] ]
+    [ "r1:2", "rgb1:R", "green", [ "v0" ] ],
+    [ "r1:1", "uno:A4", "green", [ "v0", "h-172.8" ] ],
+    [ "rgb1:G", "r2:2", "green", [ "v0" ] ],
+    [ "r2:1", "uno:A5", "green", [ "v0", "h-163.2" ] ],
+    [ "rgb1:COM", "uno:GND.3", "green", [ "v9.2", "h-326.3" ] ],
+    [ "rgb1:B", "r3:2", "green", [ "v0" ] ],
+    [ "uno:1", "r3:1", "green", [ "v105.6", "h23.4", "v163.2" ] ]
   ],
   "dependencies": {}
 }
